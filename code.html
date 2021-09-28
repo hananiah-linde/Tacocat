@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Hananiah Linde</title>
+    <title>TACO CAT: A Coding Project By Hananiah Linde</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,15 +12,15 @@
     <script src="https://kit.fontawesome.com/5db21ba9c6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/site.css">
     <link rel="stylesheet" href="css/prism.css">
-    <link rel="icon" type="img/svg" href="/img/favicon.ico">
+    <link rel="icon" type="img/svg" href="/img/favicon.svg">
 </head>
 
 <body class="d-flex flex-column h-100">
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"> <img src="img/tab_icon.svg" class="d-inline-block align-text-top"
-                    alt="logo" width="30" height="24"> APP NAME</a>
+            <a class="navbar-brand" href="http://hananiahlinde.com/"> <img src="img/logo.svg" class="d-inline-block align-text-top"
+                    alt="logo" width="39" height="34"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -51,20 +51,45 @@
         <div class="container py-5 px-5 mt-5">
             <h2 class="border-1 border-bottom border-dark">The Code</h2>
             <div class="row row-cols-1 row-cols-lg-2">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            //Call Hello World
-                            function HelloWorld() {
-                            alert("Hello World");
+                            function getValue() {
+                                document.getElementById("alert").classList.add("invisible");
+                                let userString = document.getElementById("userString").value;
+                                let returnObj = isPalindrome(userString);
+                                displayMessage(returnObj);
+                            }
+                            
+                            function isPalindrome(userString) {
+                                let returnObj = {};
+                                let regex = /[^a-z0-9]/gi;
+                            
+                                userString = userString.toLowerCase();
+                                userString = userString.replace(regex, "");
+                            
+                                let revString = userString.split("").reverse().join("");
+                            
+                                if (revString == userString) {
+                                    returnObj.msg = "Well Done! You entered a Palindrome!"
+                                }
+                                else {
+                                    returnObj.msg = "Sorry! You did not enter a Palindrome!"
+                                }
+                            
+                                returnObj.reversed = revString;
+                            
+                                return returnObj;
+                            }
+                            
+                            
+                            function displayMessage(returnObj) {
+                                document.getElementById("alertHeader").innerHTML = returnObj.msg;
+                                document.getElementById("msg").innerHTML = `Your phrase reversed is: ${returnObj.reversed}`;
+                                document.getElementById("alert").classList.remove("invisible");
                             }
                         </code>
                     </pre>
-                </div>
-                <div class="col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World" </p>
                 </div>
             </div>
         </div>
